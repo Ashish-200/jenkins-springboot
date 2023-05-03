@@ -1,0 +1,31 @@
+pipeline {
+    agent any
+    stages{
+        stage('build gradle service'){
+            steps{
+                checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[credentialsId: '5fa434b4-702c-4cbe-96f1-ba2160433caf', url: 'https://lentraAdmin@bitbucket.org/jenikins-ci-cd/springboot.git']])
+                sh './gradlew clean build'
+            }
+        }
+        stage('build docker image')
+        {
+            steps{
+                script{
+                    sh 'docker build -t anshgoyal7078848866/springbootapp .'
+                }
+            }
+        }
+        stage('push to dockerhub')
+{
+    steps{
+        script{
+            
+                sh 'docker login -u anshgoyal7078848866 -p Lentra@1234'
+                sh 'docker push anshgoyal7078848866/springbootapp'
+            
+        }
+    }
+}
+       
+    }
+}
