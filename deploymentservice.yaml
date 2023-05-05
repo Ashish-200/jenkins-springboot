@@ -17,7 +17,7 @@ spec:
           image: anshgoyal7078848866/springbootapp # Image that will be used to containers in the cluster
           imagePullPolicy: IfNotPresent
           ports:
-            - containerPort: 8086 # The port that the container is running on in the cluster
+            - containerPort: 8877 # The port that the container is running on in the cluster
 
 
 ---
@@ -31,6 +31,6 @@ spec:
     app: spring-boot-k8s
   ports:
     - protocol: "TCP"
-      port: 8086 # The port that the service is running on in the cluster
-      targetPort: 8086 # The port exposed by the service
+      port: 8877 # The port that the service is running on in the cluster
+      targetPort: 8877 # The port exposed by the service
   type: NodePort # type of the service.
