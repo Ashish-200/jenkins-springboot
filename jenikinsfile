@@ -3,7 +3,7 @@ pipeline {
     stages{
         stage('build gradle service'){
             steps{
-                checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[credentialsId: '5fa434b4-702c-4cbe-96f1-ba2160433caf', url: 'https://lentraAdmin@bitbucket.org/jenikins-ci-cd/springboot.git']])
+                checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[credentialsId: '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', url: 'https://github.com/Ashish-200/jenkins-springboot.git']])
                 sh './gradlew clean build'
             }
         }
